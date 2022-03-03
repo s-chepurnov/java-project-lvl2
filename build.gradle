@@ -38,5 +38,6 @@ jacocoTestReport {
 checkstyle {
     toolVersion '9.2.1'
 }
+java.toolchain.languageVersion = JavaLanguageVersion.of(16)
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
