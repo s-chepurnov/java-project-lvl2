@@ -39,7 +39,7 @@ public class Differ {
                 sb.append("  - " + key + ": " + v1);
                 sb.append("\n");
                 sb.append("  + " + key + ": " + v2);
-            } else if (v1 == null & v2 != null) {
+            } else if (v1 == null && v2 != null) {
                 //add
                 sb.append("  + " + key + ": " + v2);
             }

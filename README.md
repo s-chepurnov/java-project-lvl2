@@ -5,6 +5,8 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/43d38a60c5a162503252/test_coverage)](https://codeclimate.com/github/s-chepurnov/java-project-lvl2/test_coverage)
 
-# run
+### run
+
 make install
-./build/install/app/bin/app file1.json file2.json
+
+./build/install/app/bin/app src/test/resources/file1.json src/test/resources/file2.json

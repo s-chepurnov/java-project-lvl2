@@ -20,6 +20,7 @@ class App implements Callable<Integer> {
     @Parameters(index = "1", description = "path to second file")
     private Path filepath2;
 
+    @SuppressWarnings({"unused"})
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
     private String format = "stylish";
 
