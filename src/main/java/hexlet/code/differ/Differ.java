@@ -3,18 +3,23 @@ package hexlet.code.differ;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Differ {
 
-    public static String generate(String content1, String content2) throws Exception {
-        Map<String, Object> map1 = getData(content1);
-        Map<String, Object> map2 = getData(content2);
+    public static String generate(String json1, String json2) throws Exception {
+        Map<String, Object> map1 = getData(json1);
+        Map<String, Object> map2 = getData(json2);
 
         //sort and make unique
         Set<String> set = new TreeSet<>(map1.keySet());
         Set<String> set2 = new TreeSet<>(map2.keySet());
         set.addAll(set2);
+        if (set.isEmpty()) {
+            return "{}";
+        }
 
         StringBuilder sb = new StringBuilder();
         sb.append("{\n");
@@ -51,7 +56,7 @@ public class Differ {
 
     public static Map<String, Object> parse(String content) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Object> map = objectMapper.readValue(content, new TypeReference<Map<String,Object>>(){});
+        Map<String, Object> map = objectMapper.readValue(content, new TypeReference<Map<String, Object>>() { });
         return map;
     }
 }
