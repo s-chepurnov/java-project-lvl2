@@ -5,6 +5,8 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/43d38a60c5a162503252/test_coverage)](https://codeclimate.com/github/s-chepurnov/java-project-lvl2/test_coverage)
 
+[![asciicast](https://asciinema.org/a/475065.svg)](https://asciinema.org/a/475065)
+
 ### run
 
 make install

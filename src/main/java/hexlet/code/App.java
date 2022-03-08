@@ -1,6 +1,7 @@
 package hexlet.code;
 
 import hexlet.code.differ.Differ;
+import hexlet.code.utils.Utils;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
@@ -29,7 +30,9 @@ class App implements Callable<Integer> {
         try {
             String fileContent1 = Files.readString(filepath1);
             String fileContent2 = Files.readString(filepath2);
-            String diff = Differ.generate(fileContent1, fileContent2);
+            String path1 = filepath1.toString(); //src/test/resources/file1.json
+
+            String diff = Differ.generate(fileContent1, fileContent2, Utils.getFileExtension(path1));
             System.out.println(diff);
         } catch (Exception e) {
             System.out.println(e.getMessage());
