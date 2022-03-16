@@ -7,6 +7,9 @@
 
 [![asciicast](https://asciinema.org/a/475065.svg)](https://asciinema.org/a/475065)
 
+### Compare files with nested structure
+[![asciicast](https://asciinema.org/a/477146.svg)](https://asciinema.org/a/477146)
+
 ### run
 
 make install

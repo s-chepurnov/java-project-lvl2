@@ -21,7 +21,8 @@ public class DifferTest {
 
         String fileContent1 = Files.readString(filePath1);
         String fileContent2 = Files.readString(filePath2);
-        String diff = Differ.generate(fileContent1, fileContent2, Utils.getFileExtension(filePath1.toString()));
+        String diff = Differ.generate(fileContent1, fileContent2,
+                Utils.getFileExtension(filePath1.toString()), StylishFormatter.NAME);
 
         assertThat(diff).isEqualTo(result);
     }
@@ -34,7 +35,8 @@ public class DifferTest {
 
         String fileContent1 = Files.readString(filePath1);
         String fileContent2 = Files.readString(filePath2);
-        String diff = Differ.generate(fileContent1, fileContent2, Utils.getFileExtension(filePath1.toString()));
+        String diff = Differ.generate(fileContent1, fileContent2,
+                Utils.getFileExtension(filePath1.toString()), StylishFormatter.NAME);
 
         assertThat(diff).isEqualTo(result);
     }
@@ -44,13 +46,13 @@ public class DifferTest {
         String result = "{}";
 
         //json
-        String diffJson = Differ.generate("{}", "{}", "json");
+        String diffJson = Differ.generate("{}", "{}", "json", StylishFormatter.NAME);
         assertThat(diffJson).isEqualTo(result);
 
         //yaml
         Exception thrown = assertThrows(
                 JsonMappingException.class,
-                () -> Differ.generate("", "", "yml")
+                () -> Differ.generate("", "", "yml", StylishFormatter.NAME)
         );
 
         assertTrue(thrown.getMessage().contains("No content to map due to end-of-input"));

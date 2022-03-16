@@ -21,7 +21,6 @@ class App implements Callable<Integer> {
     @Parameters(index = "1", description = "path to second file")
     private Path filepath2;
 
-    @SuppressWarnings({"unused"})
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
     private String format = "stylish";
 
@@ -30,9 +29,9 @@ class App implements Callable<Integer> {
         try {
             String fileContent1 = Files.readString(filepath1);
             String fileContent2 = Files.readString(filepath2);
-            String path1 = filepath1.toString(); //src/test/resources/file1.json
+            String path1 = filepath1.toString(); // "src/test/resources/file1.json"
 
-            String diff = Differ.generate(fileContent1, fileContent2, Utils.getFileExtension(path1));
+            String diff = Differ.generate(fileContent1, fileContent2, Utils.getFileExtension(path1), format);
             System.out.println(diff);
         } catch (Exception e) {
             System.out.println(e.getMessage());
