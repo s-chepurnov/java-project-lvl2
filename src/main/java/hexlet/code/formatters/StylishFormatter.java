@@ -1,4 +1,6 @@
-package hexlet.code.differ;
+package hexlet.code.formatters;
+
+import hexlet.code.differ.Status;
 
 import java.util.Map;
 
@@ -18,16 +20,16 @@ public class StylishFormatter {
             Object v1 = entry.getValue().getOldValue();
             Object v2 = entry.getValue().getNewValue();
 
-            if (status.equals(Status.DELETED)) {
-                sb.append("  - " + key + ": " + v1);
-            } else if (status.equals(Status.UNCHANGED)) {
-                sb.append("    " + key + ": " + v1);
-            } else if (status.equals(Status.CHANGED)) {
-                sb.append("  - " + key + ": " + v1);
-                sb.append("\n");
-                sb.append("  + " + key + ": " + v2);
-            } else if (status.equals(Status.ADDED)) {
-                sb.append("  + " + key + ": " + v2);
+            switch (status) {
+                case Status.DELETED -> sb.append("  - " + key + ": " + v1);
+                case Status.ADDED -> sb.append("  + " + key + ": " + v2);
+                case Status.UNCHANGED -> sb.append("    " + key + ": " + v1);
+                case Status.CHANGED -> {
+                    sb.append("  - " + key + ": " + v1);
+                    sb.append("\n");
+                    sb.append("  + " + key + ": " + v2);
+                }
+                default -> throw new RuntimeException("there is no such status");
             }
             sb.append("\n");
         }

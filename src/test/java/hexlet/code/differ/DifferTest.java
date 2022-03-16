@@ -1,6 +1,8 @@
 package hexlet.code.differ;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
+import hexlet.code.formatters.PlainFormatter;
+import hexlet.code.formatters.StylishFormatter;
 import hexlet.code.utils.Utils;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -14,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DifferTest {
 
     @Test
-    public void testEqualsJson() throws Exception {
+    public void testEqualsJsonWithStylishFormatter() throws Exception {
         Path filePath1 = Path.of("src/test/resources/file1.json");
         Path filePath2 = Path.of("src/test/resources/file2.json");
-        String result = Files.readString(Path.of("src/test/resources/result12.diff"));
+        String result = Files.readString(Path.of("src/test/resources/stylishResult12.diff"));
 
         String fileContent1 = Files.readString(filePath1);
         String fileContent2 = Files.readString(filePath2);
@@ -28,15 +30,43 @@ public class DifferTest {
     }
 
     @Test
-    public void testEqualsYml() throws Exception {
+    public void testEqualsJsonWithPlainFormatter() throws Exception {
+        Path filePath1 = Path.of("src/test/resources/file1.json");
+        Path filePath2 = Path.of("src/test/resources/file2.json");
+        String result = Files.readString(Path.of("src/test/resources/plainResult12.diff"));
+
+        String fileContent1 = Files.readString(filePath1);
+        String fileContent2 = Files.readString(filePath2);
+        String diff = Differ.generate(fileContent1, fileContent2,
+                Utils.getFileExtension(filePath1.toString()), PlainFormatter.NAME);
+
+        assertThat(diff).isEqualTo(result);
+    }
+
+    @Test
+    public void testEqualsYmlWithStylishFormatter() throws Exception {
         Path filePath1 = Path.of("src/test/resources/file1.yml");
         Path filePath2 = Path.of("src/test/resources/file2.yml");
-        String result = Files.readString(Path.of("src/test/resources/result12.diff"));
+        String result = Files.readString(Path.of("src/test/resources/stylishResult12.diff"));
 
         String fileContent1 = Files.readString(filePath1);
         String fileContent2 = Files.readString(filePath2);
         String diff = Differ.generate(fileContent1, fileContent2,
                 Utils.getFileExtension(filePath1.toString()), StylishFormatter.NAME);
+
+        assertThat(diff).isEqualTo(result);
+    }
+
+    @Test
+    public void testEqualsYmlWithPlainFormatter() throws Exception {
+        Path filePath1 = Path.of("src/test/resources/file1.yml");
+        Path filePath2 = Path.of("src/test/resources/file2.yml");
+        String result = Files.readString(Path.of("src/test/resources/plainResult12.diff"));
+
+        String fileContent1 = Files.readString(filePath1);
+        String fileContent2 = Files.readString(filePath2);
+        String diff = Differ.generate(fileContent1, fileContent2,
+                Utils.getFileExtension(filePath1.toString()), PlainFormatter.NAME);
 
         assertThat(diff).isEqualTo(result);
     }

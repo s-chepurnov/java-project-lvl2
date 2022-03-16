@@ -1,5 +1,7 @@
 package hexlet.code.differ;
 
+import hexlet.code.Formatter;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -43,12 +45,7 @@ public class Differ {
         }
 
         //format
-        String formatted = "";
-        if (format.equals(StylishFormatter.NAME)) {
-            formatted = StylishFormatter.format(map);
-        }
-
-        return formatted;
+        return Formatter.choose(map, format);
     }
 
 }

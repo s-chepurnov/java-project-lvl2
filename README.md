@@ -7,8 +7,11 @@
 
 [![asciicast](https://asciinema.org/a/475065.svg)](https://asciinema.org/a/475065)
 
-### Compare files with nested structure
+### Compare files with nested structure. Step 8
 [![asciicast](https://asciinema.org/a/477146.svg)](https://asciinema.org/a/477146)
+
+### Plain formatter. Step 9
+[![asciicast](https://asciinema.org/a/477370.svg)](https://asciinema.org/a/477370)
 
 ### run
 
