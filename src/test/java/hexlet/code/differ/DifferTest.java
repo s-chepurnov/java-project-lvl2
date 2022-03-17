@@ -1,6 +1,7 @@
 package hexlet.code.differ;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
+import hexlet.code.formatters.JsonFormatter;
 import hexlet.code.formatters.PlainFormatter;
 import hexlet.code.formatters.StylishFormatter;
 import hexlet.code.utils.Utils;
@@ -69,6 +70,19 @@ public class DifferTest {
                 Utils.getFileExtension(filePath1.toString()), PlainFormatter.NAME);
 
         assertThat(diff).isEqualTo(result);
+    }
+
+    @Test
+    public void testEqualsJsonWithJsonFormatter() throws Exception {
+        Path filePath1 = Path.of("src/test/resources/file1.json");
+        Path filePath2 = Path.of("src/test/resources/file2.json");
+
+        String fileContent1 = Files.readString(filePath1);
+        String fileContent2 = Files.readString(filePath2);
+        String diff = Differ.generate(fileContent1, fileContent2,
+                Utils.getFileExtension(filePath1.toString()), JsonFormatter.NAME);
+
+        assertThat(diff.isEmpty()).isFalse();
     }
 
     @Test

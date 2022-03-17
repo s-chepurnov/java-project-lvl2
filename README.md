@@ -13,6 +13,9 @@
 ### Plain formatter. Step 9
 [![asciicast](https://asciinema.org/a/477370.svg)](https://asciinema.org/a/477370)
 
+### Json output. Step 10
+[![asciicast](https://asciinema.org/a/477673.svg)](https://asciinema.org/a/477673)
+
 ### run
 
 make install
