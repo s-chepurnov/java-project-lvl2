@@ -11,16 +11,12 @@ import java.util.Map;
 public class Formatter {
 
     public static String choose(Map<String, Status> map, String format) throws IOException {
+        return switch (format) {
+            case StylishFormatter.NAME -> StylishFormatter.format(map);
+            case PlainFormatter.NAME -> PlainFormatter.format(map);
+            case JsonFormatter.NAME -> JsonFormatter.format(map);
+            default -> throw new RuntimeException("There is no such formatter");
+        };
 
-        String formatted = "";
-        if (format.equals(StylishFormatter.NAME)) {
-            formatted = StylishFormatter.format(map);
-        } else if (format.equals(PlainFormatter.NAME)) {
-            formatted = PlainFormatter.format(map);
-        } else if (format.equals(JsonFormatter.NAME)) {
-            formatted = JsonFormatter.format(map);
-        }
-
-        return formatted;
     }
 }
