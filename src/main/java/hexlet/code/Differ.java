@@ -1,6 +1,4 @@
-package hexlet.code.differ;
-
-import hexlet.code.Formatter;
+package hexlet.code;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

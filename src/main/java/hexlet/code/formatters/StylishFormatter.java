@@ -1,6 +1,6 @@
 package hexlet.code.formatters;
 
-import hexlet.code.differ.Status;
+import hexlet.code.Status;
 
 import java.util.Map;
 

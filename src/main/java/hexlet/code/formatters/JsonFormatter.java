@@ -1,7 +1,7 @@
 package hexlet.code.formatters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hexlet.code.differ.Status;
+import hexlet.code.Status;
 
 import java.io.IOException;
 import java.util.Map;
