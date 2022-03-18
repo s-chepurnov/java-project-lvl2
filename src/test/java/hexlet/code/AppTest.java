@@ -1,20 +1,16 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.JsonMappingException;
 import hexlet.code.differ.Differ;
 import hexlet.code.differ.Parser;
 import hexlet.code.formatters.JsonFormatter;
 import hexlet.code.formatters.PlainFormatter;
 import hexlet.code.formatters.StylishFormatter;
 import hexlet.code.utils.Utils;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class AppTest {
 
@@ -29,7 +25,7 @@ public class AppTest {
         String diff = Differ.generate(fileContent1, fileContent2,
                 Utils.getFileExtension(filePath1.toString()), StylishFormatter.NAME);
 
-        assertThat(diff).isEqualTo(result);
+        org.assertj.core.api.Assertions.assertThat(diff).isEqualTo(result);
     }
 
     @Test
@@ -43,7 +39,7 @@ public class AppTest {
         String diff = Differ.generate(fileContent1, fileContent2,
                 Utils.getFileExtension(filePath1.toString()), PlainFormatter.NAME);
 
-        assertThat(diff).isEqualTo(result);
+        org.assertj.core.api.Assertions.assertThat(diff).isEqualTo(result);
     }
 
     @Test
@@ -57,7 +53,7 @@ public class AppTest {
         String diff = Differ.generate(fileContent1, fileContent2,
                 Utils.getFileExtension(filePath1.toString()), StylishFormatter.NAME);
 
-        assertThat(diff).isEqualTo(result);
+        org.assertj.core.api.Assertions.assertThat(diff).isEqualTo(result);
     }
 
     @Test
@@ -71,7 +67,7 @@ public class AppTest {
         String diff = Differ.generate(fileContent1, fileContent2,
                 Utils.getFileExtension(filePath1.toString()), PlainFormatter.NAME);
 
-        assertThat(diff).isEqualTo(result);
+        org.assertj.core.api.Assertions.assertThat(diff).isEqualTo(result);
     }
 
     @Test
@@ -84,7 +80,7 @@ public class AppTest {
         String diff = Differ.generate(fileContent1, fileContent2,
                 Utils.getFileExtension(filePath1.toString()), JsonFormatter.NAME);
 
-        assertThat(diff.isEmpty()).isFalse();
+        org.assertj.core.api.Assertions.assertThat(diff.isEmpty()).isFalse();
     }
 
     @Test
@@ -93,15 +89,16 @@ public class AppTest {
 
         //json
         String diffJson = Differ.generate("{}", "{}", "json", StylishFormatter.NAME);
-        assertThat(diffJson).isEqualTo(result);
+        org.assertj.core.api.Assertions.assertThat(diffJson).isEqualTo(result);
 
         //yaml
-        Exception thrown = assertThrows(
+        Exception thrown = org.junit.jupiter.api.Assertions.assertThrows(
                 JsonMappingException.class,
                 () -> Differ.generate("", "", "yml", StylishFormatter.NAME)
         );
 
-        assertTrue(thrown.getMessage().contains("No content to map due to end-of-input"));
+        org.junit.jupiter.api.Assertions.assertTrue(
+                thrown.getMessage().contains("No content to map due to end-of-input"));
     }
 
     @Test
@@ -110,7 +107,7 @@ public class AppTest {
         String fileContent = Files.readString(filePath);
 
         Map<String, Object> map = Parser.parseJson(fileContent);
-        assertThat(map.isEmpty()).isFalse();
+        org.assertj.core.api.Assertions.assertThat(map.isEmpty()).isFalse();
     }
 
     @Test
@@ -119,6 +116,6 @@ public class AppTest {
         String fileContent = Files.readString(filePath);
 
         Map<String, Object> map = Parser.parseYml(fileContent);
-        assertThat(map.isEmpty()).isFalse();
+        org.assertj.core.api.Assertions.assertThat(map.isEmpty()).isFalse();
     }
 }

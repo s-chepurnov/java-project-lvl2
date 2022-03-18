@@ -21,5 +21,5 @@
 make install
 
 ./build/install/app/bin/app src/test/resources/file1.json src/test/resources/file2.json
-./build/install/app/bin/app -f plain src/test/resources/file1.yml src/test/resources/file2.yml
 
+./build/install/app/bin/app -f plain src/test/resources/file1.yml src/test/resources/file2.yml
