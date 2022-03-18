@@ -7,12 +7,11 @@ import java.util.TreeSet;
 
 public class Differ {
 
-    public static String generate(String fileContent1, String fileContent2, String fileExtension, String format)
+    public static String generate(String filepath1, String filepath2, String format)
             throws Exception {
-
         //get
-        Map<String, Object> map1 = Parser.getData(fileContent1, fileExtension);
-        Map<String, Object> map2 = Parser.getData(fileContent2, fileExtension);
+        Map<String, Object> map1 = Parser.getData(filepath1);
+        Map<String, Object> map2 = Parser.getData(filepath2);
 
         //sort
         Set<String> set = new TreeSet<>(map1.keySet());
