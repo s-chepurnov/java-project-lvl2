@@ -7,15 +7,17 @@ plugins {
     id 'io.freefair.lombok' version '6.4.1'
     id 'jacoco'
 }
-application {
-    mainClass = 'hexlet.code.App'
-}
-java.toolchain.languageVersion = JavaLanguageVersion.of(16)
+
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
 
+application {
+    mainClass = 'hexlet.code.App'
+}
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
 compileJava {
-    options.release = 16
+    options.release = 17
 }
 
 repositories {
