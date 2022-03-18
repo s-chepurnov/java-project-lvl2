@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.formatters.StylishFormatter;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -7,8 +9,17 @@ import java.util.TreeSet;
 
 public class Differ {
 
-    public static String generate(String filepath1, String filepath2, String format)
-            throws Exception {
+    public static String generate(String... values) throws Exception {
+
+
+        String filepath1 = values[0];
+        String filepath2 = values[1];
+        String format = StylishFormatter.NAME;
+        final int length = 3;
+        if (values.length >= length) {
+            format = values[2];
+        }
+
         //get
         Map<String, Object> map1 = Parser.getData(filepath1);
         Map<String, Object> map2 = Parser.getData(filepath2);
