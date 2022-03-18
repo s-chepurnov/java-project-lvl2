@@ -1,6 +1,8 @@
-package hexlet.code.differ;
+package hexlet.code;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
+import hexlet.code.differ.Differ;
+import hexlet.code.differ.Parser;
 import hexlet.code.formatters.JsonFormatter;
 import hexlet.code.formatters.PlainFormatter;
 import hexlet.code.formatters.StylishFormatter;
@@ -14,7 +16,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DifferTest {
+public class AppTest {
 
     @Test
     public void testEqualsJsonWithStylishFormatter() throws Exception {
