@@ -14,7 +14,7 @@ public class Formatter {
             case StylishFormatter.NAME -> StylishFormatter.format(map);
             case PlainFormatter.NAME -> PlainFormatter.format(map);
             case JsonFormatter.NAME -> JsonFormatter.format(map);
-            default -> throw new RuntimeException("There is no such formatter");
+            default -> throw new RuntimeException("There is no such formatter: " + format);
         };
 
     }

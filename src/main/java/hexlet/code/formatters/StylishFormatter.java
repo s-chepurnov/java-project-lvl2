@@ -29,7 +29,7 @@ public class StylishFormatter {
                     sb.append("\n");
                     sb.append("  + " + key + ": " + v2);
                 }
-                default -> throw new RuntimeException("there is no such status");
+                default -> throw new RuntimeException("there is no such status: " + status);
             }
             sb.append("\n");
         }

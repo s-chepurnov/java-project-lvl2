@@ -11,7 +11,6 @@ public class Differ {
 
     public static String generate(String... values) throws Exception {
 
-
         String filepath1 = values[0];
         String filepath2 = values[1];
         String format = StylishFormatter.NAME;

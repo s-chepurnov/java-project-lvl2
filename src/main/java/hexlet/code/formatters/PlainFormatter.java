@@ -11,6 +11,7 @@ public class PlainFormatter {
     public static String format(Map<String, Status> map) {
 
         StringBuilder sb = new StringBuilder();
+        int size = map.size();
 
         for (Map.Entry<String, Status> entry : map.entrySet()) {
             String key = entry.getKey();
@@ -41,24 +42,32 @@ public class PlainFormatter {
                 }
             }
 
+            size--;
             switch (status) {
-                case Status.DELETED:
+                case Status.DELETED -> {
                     sb.append("Property '" + key + "' was removed");
-                    sb.append("\n");
-                    break;
-                case Status.UNCHANGED:
-                    break;
-                case Status.CHANGED:
+                    if (size > 0) {
+                        sb.append("\n");
+                    }
+                }
+                case Status.CHANGED -> {
                     sb.append("Property '" + key + "' was updated. From " + value1 + " to " + value2);
-                    sb.append("\n");
-                    break;
-                case Status.ADDED:
+                    if (size > 0) {
+                        sb.append("\n");
+                    }
+                }
+                case Status.ADDED -> {
                     sb.append("Property '" + key + "' was added with value: " + value2);
-                    sb.append("\n");
-                    break;
-                default:
-                    throw new RuntimeException("there is no such status");
+                    if (size > 0) {
+                        sb.append("\n");
+                    }
+                }
+                case Status.UNCHANGED -> {
+
+                }
+                default -> throw new RuntimeException("there is no such status: " + status);
             }
+
         }
 
         return sb.toString();
