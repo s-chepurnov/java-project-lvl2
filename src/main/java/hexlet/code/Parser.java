@@ -5,15 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import hexlet.code.utils.Utils;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Map;
 
 public class Parser {
 
     public static Map<String, Object> getData(String filepath) throws Exception {
-
-        final String fileContent = Files.readString(Path.of(filepath));
+        final String fileContent = Utils.readFile(filepath);
         final String fileExtension = Utils.getFileExtension(filepath);
 
         return switch (fileExtension) {

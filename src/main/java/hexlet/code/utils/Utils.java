@@ -1,5 +1,9 @@
 package hexlet.code.utils;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class Utils {
 
     public static String getFileExtension(String fileName) {
@@ -15,5 +19,10 @@ public class Utils {
         }
 
         return extension;
+    }
+
+    public static String readFile(String filepath) throws IOException {
+        final String fileContent = Files.readString(Path.of(filepath));
+        return fileContent;
     }
 }

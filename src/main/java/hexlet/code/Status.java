@@ -11,10 +11,10 @@ public final class Status {
     private Object oldValue;
     private Object newValue;
 
-    Status(String key, Object val1, Object val2) {
-        statusName = key;
-        oldValue = val1;
-        newValue = val2;
+    Status(String statusname, Object oldvalue, Object newvalue) {
+        statusName = statusname;
+        oldValue = oldvalue;
+        newValue = newvalue;
     }
 
     public String getStatusName() {

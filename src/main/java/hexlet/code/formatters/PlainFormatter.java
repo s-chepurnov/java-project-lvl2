@@ -20,27 +20,8 @@ public class PlainFormatter {
             Object v1 = entry.getValue().getOldValue();
             Object v2 = entry.getValue().getNewValue();
 
-            String value1 = null;
-            if (v1 != null && String.class.isInstance(v1)) {
-                value1 = "'" + v1 + "'";
-            } else if (v1 != null) {
-                value1 = v1.toString();
-
-                if (value1.contains("[") || value1.contains("{")) {
-                    value1 = "[complex value]";
-                }
-            }
-
-            String value2 = null;
-            if (v2 != null && String.class.isInstance(v2)) {
-                value2 = "'" + v2 + "'";
-            } else if (v2 != null) {
-                value2 = v2.toString();
-
-                if (value2.contains("[") || value2.contains("{")) {
-                    value2 = "[complex value]";
-                }
-            }
+            String value1 = getValueStr(v1);
+            String value2 = getValueStr(v2);
 
             size--;
             switch (status) {
@@ -71,5 +52,20 @@ public class PlainFormatter {
         }
 
         return sb.toString();
+    }
+
+    public static String getValueStr(Object val) {
+        String value = null;
+        if (val != null && String.class.isInstance(val)) {
+            value = "'" + val + "'";
+        } else if (val != null) {
+            value = val.toString();
+
+            if (value.contains("[") || value.contains("{")) {
+                value = "[complex value]";
+            }
+        }
+
+        return value;
     }
 }
