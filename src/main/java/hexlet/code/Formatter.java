@@ -10,11 +10,12 @@ import java.util.Map;
 public class Formatter {
 
     public static String choose(Map<String, Status> map, String format) throws IOException {
+
         return switch (format) {
             case StylishFormatter.NAME -> StylishFormatter.format(map);
             case PlainFormatter.NAME -> PlainFormatter.format(map);
             case JsonFormatter.NAME -> JsonFormatter.format(map);
-            default -> throw new RuntimeException("There is no such formatter: " + format);
+            default -> throw new RuntimeException("There is no such format: " + format);
         };
 
     }

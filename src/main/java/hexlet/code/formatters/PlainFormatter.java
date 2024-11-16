@@ -2,6 +2,7 @@ package hexlet.code.formatters;
 
 import hexlet.code.Status;
 
+import java.util.List;
 import java.util.Map;
 
 public class PlainFormatter {
@@ -20,8 +21,8 @@ public class PlainFormatter {
             Object v1 = entry.getValue().getOldValue();
             Object v2 = entry.getValue().getNewValue();
 
-            String value1 = getValueStr(v1);
-            String value2 = getValueStr(v2);
+            String value1 = stringify(v1);
+            String value2 = stringify(v2);
 
             size--;
             switch (status) {
@@ -54,18 +55,16 @@ public class PlainFormatter {
         return sb.toString();
     }
 
-    public static String getValueStr(Object val) {
-        String value = null;
-        if (val != null && String.class.isInstance(val)) {
-            value = "'" + val + "'";
-        } else if (val != null) {
-            value = val.toString();
-
-            if (value.contains("[") || value.contains("{")) {
-                value = "[complex value]";
-            }
+    private static String stringify(Object value) {
+        if (value == null) {
+            return "null";
+        } else if (value instanceof String) {
+            return "'" + value + "'";
+        } else if (value instanceof Map || value instanceof List) {
+            return "[complex value]";
         }
 
-        return value;
+        return value.toString();
     }
+
 }

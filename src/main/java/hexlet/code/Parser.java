@@ -3,20 +3,15 @@ package hexlet.code;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import hexlet.code.utils.Utils;
-
 import java.util.Map;
 
 public class Parser {
 
-    public static Map<String, Object> getData(String filepath) throws Exception {
-        final String fileContent = Utils.readFile(filepath);
-        final String fileExtension = Utils.getFileExtension(filepath);
-
-        return switch (fileExtension) {
-            case "json" -> parseJson(fileContent);
-            case "yml" -> parseYml(fileContent);
-            default -> throw new Exception("No such format");
+    public static Map<String, Object> parse(String content, String format) throws Exception {
+        return switch (format) {
+            case "json" -> parseJson(content);
+            case "yml" -> parseYml(content);
+            default -> throw new Exception("No such format: " + format);
         };
     }
 

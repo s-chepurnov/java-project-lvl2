@@ -1,6 +1,7 @@
 package hexlet.code;
 
 import hexlet.code.formatters.StylishFormatter;
+import hexlet.code.utils.Utils;
 import java.util.Map;
 
 public class Differ {
@@ -10,17 +11,19 @@ public class Differ {
     }
 
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
-        format = (format == null || format.isEmpty()) ? StylishFormatter.NAME : format;
+        Map<String, Object> map1 = getData(filepath1);
+        Map<String, Object> map2 = getData(filepath2);
 
-        //get data
-        Map<String, Object> map1 = Parser.getData(filepath1);
-        Map<String, Object> map2 = Parser.getData(filepath2);
-
-        //gen diff
         Map<String, Status> map = DiffCreator.createDiff(map1, map2);
-
-        //format result
         return Formatter.choose(map, format);
+    }
+
+    private static Map<String, Object> getData(String filepath) throws Exception {
+        final String content = Utils.readFile(filepath);
+        final String extension = Utils.getFileExtension(filepath);
+
+        Map<String, Object> map = Parser.parse(content, extension);
+        return map;
     }
 
 }

@@ -41,6 +41,7 @@ public class AppTest {
         String result = Utils.readFile(STYLISH_RESULT);
 
         assertThat(diff).isEqualTo(result);
+
     }
 
     @Test
